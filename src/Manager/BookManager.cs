@@ -1,9 +1,19 @@
-﻿using Opcion1SaletGutierrez.src.Models;
+﻿using Opcion1SaletGutierrez.src.Interfaces;
+using Opcion1SaletGutierrez.src.Models;
 
 namespace Opcion1SaletGutierrez.src.Manager;
 
 public class BookManager : IBookManager
 {
+    private readonly string BooksJsonFilePath = "src/Jsons/books.json";
+    
+    private readonly IDataManager<Book> _dataManager;
+
+    public BookManager()
+    {
+        _dataManager = new DataManager<Book>(BooksJsonFilePath);
+    }
+
     public bool AddBook(Book book)
     {
         throw new NotImplementedException();
