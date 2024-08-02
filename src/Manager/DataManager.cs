@@ -72,7 +72,27 @@ public class DataManager<T> : IDataManager<T>
 
     public List<T> SearchByAttribute(string attributeName, string value)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var dataList = LoadData(_jsonFilePath);
+            var propertyInfo = typeof(T).GetProperty(attributeName);
+            if (propertyInfo == null)
+            {
+                throw new ArgumentException($"Property '{attributeName}' not found in type '{typeof(T).Name}'");
+            }
+
+            var results = dataList.Where(
+                            x => propertyInfo.GetValue(x)?
+                            .ToString()
+                            .Equals(value, StringComparison.OrdinalIgnoreCase) == true)
+                            .ToList();
+            return results;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error searching by attribute: {ex.Message}");
+            return new List<T>();
+        }
     }
 
     public T SearchById(string attributeName, T id)
