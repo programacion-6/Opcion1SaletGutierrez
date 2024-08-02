@@ -5,7 +5,7 @@ public class User
     private int _memberNumber;
 
     private string _name;
-    
+
     private string _contactInfo;
 
     public int MemberNumber
