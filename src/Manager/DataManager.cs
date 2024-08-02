@@ -1,4 +1,5 @@
-﻿using Opcion1SaletGutierrez.src.Interfaces;
+﻿using Newtonsoft.Json;
+using Opcion1SaletGutierrez.src.Interfaces;
 
 namespace Opcion1SaletGutierrez.src.Manager;
 
@@ -18,7 +19,17 @@ public class DataManager<T> : IDataManager<T>
 
     public List<T> LoadData(string jsonFilePath)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var jsonData = File.ReadAllText(jsonFilePath);
+            var dataList = JsonConvert.DeserializeObject<List<T>>(jsonData);
+            return dataList ?? new List<T>();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading data: {ex.Message}");
+            return new List<T>();
+        }
     }
 
     public bool RemoveItem(string attributeName, object id)
