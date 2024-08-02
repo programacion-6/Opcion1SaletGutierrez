@@ -45,7 +45,29 @@ public class DataManager<T> : IDataManager<T>
 
     public bool RemoveItem(string attributeName, object id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var dataList = LoadData(_jsonFilePath);
+            var propertyInfo = typeof(T).GetProperty(attributeName);
+            if (propertyInfo == null)
+            {
+                throw new ArgumentException($"Property '{attributeName}' not found in type '{typeof(T).Name}'");
+            }
+
+            var itemToRemove = dataList.FirstOrDefault(x => propertyInfo.GetValue(x)?.ToString() == id.ToString());
+            if (itemToRemove != null)
+            {
+                dataList.Remove(itemToRemove);
+                File.WriteAllText(_jsonFilePath, JsonConvert.SerializeObject(dataList, Formatting.Indented));
+                return true;
+            }
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error removing item: {ex.Message}");
+            return false;
+        }
     }
 
     public List<T> SearchByAttribute(string attributeName, string value)
