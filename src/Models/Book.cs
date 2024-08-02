@@ -1,4 +1,6 @@
-﻿using Opcion1SaletGutierrez.src.Enums;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Opcion1SaletGutierrez.src.Enums;
 
 namespace Opcion1SaletGutierrez.src.Models;
 
@@ -10,10 +12,11 @@ public class Book
 
     public string Isbn { get; set; }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public Genre Genre { get; set; }
 
     public int PublicationYear { get; set; }
 
     public bool IsAvailable { get; set; } = true;
-    
+
 }
