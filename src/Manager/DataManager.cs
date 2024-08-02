@@ -14,7 +14,18 @@ public class DataManager<T> : IDataManager<T>
 
     public bool AddItem(T item)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var dataList = LoadData(_jsonFilePath);
+            dataList.Add(item);
+            File.WriteAllText(_jsonFilePath, JsonConvert.SerializeObject(dataList, Formatting.Indented));
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error adding item: {ex.Message}");
+            return false;
+        }
     }
 
     public List<T> LoadData(string jsonFilePath)
