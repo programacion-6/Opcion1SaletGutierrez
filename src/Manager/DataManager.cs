@@ -118,6 +118,29 @@ public class DataManager<T> : IDataManager<T>
 
     public bool UpdateItem(string attributeName, object id, T updatedItem)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var dataList = LoadData(_jsonFilePath);
+            var itemIndex = dataList.FindIndex(x => GetPropertyValue(x, attributeName).Equals(id));
+
+            if (itemIndex >= 0)
+            {
+                dataList[itemIndex] = updatedItem;
+                File.WriteAllText(_jsonFilePath, JsonConvert.SerializeObject(dataList, Formatting.Indented));
+                return true;
+            }
+
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error updating item: {ex.Message}");
+            return false;
+        }
+    }
+    
+    private object GetPropertyValue(object obj, string propertyName)
+    {
+        return obj.GetType().GetProperty(propertyName)?.GetValue(obj, null);
     }
 }
