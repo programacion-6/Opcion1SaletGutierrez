@@ -16,7 +16,7 @@ public class DataManager<T> : IDataManager<T>
     {
         try
         {
-            var dataList = LoadData(_jsonFilePath);
+            var dataList = LoadData();
             dataList.Add(item);
             File.WriteAllText(_jsonFilePath, JsonConvert.SerializeObject(dataList, Formatting.Indented));
             return true;
@@ -28,11 +28,11 @@ public class DataManager<T> : IDataManager<T>
         }
     }
 
-    public List<T> LoadData(string jsonFilePath)
+    public List<T> LoadData()
     {
         try
         {
-            var jsonData = File.ReadAllText(jsonFilePath);
+            var jsonData = File.ReadAllText(_jsonFilePath);
             var dataList = JsonConvert.DeserializeObject<List<T>>(jsonData);
             return dataList ?? new List<T>();
         }
@@ -47,7 +47,7 @@ public class DataManager<T> : IDataManager<T>
     {
         try
         {
-            var dataList = LoadData(_jsonFilePath);
+            var dataList = LoadData();
             var propertyInfo = typeof(T).GetProperty(attributeName);
             if (propertyInfo == null)
             {
@@ -74,7 +74,7 @@ public class DataManager<T> : IDataManager<T>
     {
         try
         {
-            var dataList = LoadData(_jsonFilePath);
+            var dataList = LoadData();
             var propertyInfo = typeof(T).GetProperty(attributeName);
             if (propertyInfo == null)
             {
@@ -95,11 +95,11 @@ public class DataManager<T> : IDataManager<T>
         }
     }
 
-    public T SearchById(string attributeName, T id)
+    public T SearchById(string attributeName, object id)
     {
         try
         {
-            var dataList = LoadData(_jsonFilePath);
+            var dataList = LoadData();
             var propertyInfo = typeof(T).GetProperty(attributeName);
             if (propertyInfo == null)
             {
@@ -120,7 +120,7 @@ public class DataManager<T> : IDataManager<T>
     {
         try
         {
-            var dataList = LoadData(_jsonFilePath);
+            var dataList = LoadData();
             var itemIndex = dataList.FindIndex(x => GetPropertyValue(x, attributeName).Equals(id));
 
             if (itemIndex >= 0)

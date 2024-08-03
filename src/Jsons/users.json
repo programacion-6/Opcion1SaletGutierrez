@@ -1,0 +1,17 @@
+[
+  {
+    "MemberNumber": 123456,
+    "Name": "John Doe",
+    "ContactInfo": "john.doe@example.com"
+  },
+  {
+    "MemberNumber": 654321,
+    "Name": "Jane Smith",
+    "ContactInfo": "jane.smith@example.com"
+  },
+  {
+    "MemberNumber": 23111111,
+    "Name": "Scott .T Fitzgerald",
+    "ContactInfo": "scottT08@hmail.com"
+  }
+]

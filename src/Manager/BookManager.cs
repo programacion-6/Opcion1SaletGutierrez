@@ -41,17 +41,19 @@ public class BookManager : IBookManager
 
     public List<Book> GetAllBorrowedBooks()
     {
-        throw new NotImplementedException();
+        return _dataManager.LoadData().Where(b => !b.IsAvailable).ToList();
     }
 
     public void MarkBookAsAvailable(Book book)
     {
-        throw new NotImplementedException();
+        book.IsAvailable = true;
+        _dataManager.UpdateItem("Isbn", book.Isbn, book);
     }
 
     public void MarkBookAsUnavailable(Book book)
     {
-        throw new NotImplementedException();
+        book.IsAvailable = false;
+        _dataManager.UpdateItem("Isbn", book.Isbn, book);
     }
 
     public bool RemoveBook(string isbn)
@@ -66,7 +68,7 @@ public class BookManager : IBookManager
 
     public Book SearchBookByIsbn(string isbn)
     {
-        return _dataManager.SearchByAttribute("Isbn", isbn).FirstOrDefault();
+        return _dataManager.SearchById("Isbn", isbn);
     }
 
     public List<Book> SearchByBookAuthor(string author)
