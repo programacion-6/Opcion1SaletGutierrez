@@ -5,18 +5,39 @@ namespace Opcion1SaletGutierrez.src.Manager;
 
 public class BookManager : IBookManager
 {
-    private readonly string BooksJsonFilePath = "src/Jsons/books.json";
-    
+
     private readonly IDataManager<Book> _dataManager;
 
-    public BookManager()
+    public BookManager(IDataManager<Book> dataManager)
     {
-        _dataManager = new DataManager<Book>(BooksJsonFilePath);
+        _dataManager = dataManager;
     }
 
     public bool AddBook(Book book)
     {
-        throw new NotImplementedException();
+        if (IsDuplicate(book))
+        {
+            return false;
+        }
+        return _dataManager.AddItem(book);
+    }
+
+    private bool IsDuplicate(Book book)
+    {
+        var bookByIsbn = SearchBookByIsbn(book.Isbn);
+        if (bookByIsbn != null)
+        {
+            return true;
+        }
+
+        var booksByAuthor = SearchByBookAuthor(book.Author);
+        var booksByTitle = SearchByBookTitle(book.Title);
+        if (booksByAuthor.Any() || booksByTitle.Any())
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public List<Book> GetAllBorrowedBooks()
@@ -46,17 +67,17 @@ public class BookManager : IBookManager
 
     public Book SearchBookByIsbn(string isbn)
     {
-        throw new NotImplementedException();
+        return _dataManager.SearchByAttribute("Isbn", isbn).FirstOrDefault();
     }
 
     public List<Book> SearchByBookAuthor(string author)
     {
-        throw new NotImplementedException();
+        return _dataManager.SearchByAttribute("Author", author);
     }
 
     public List<Book> SearchByBookTitle(string title)
     {
-        throw new NotImplementedException();
+        return _dataManager.SearchByAttribute("Title", title);
     }
 
     public bool UpdateBook(string isbn, Book updatedBook)

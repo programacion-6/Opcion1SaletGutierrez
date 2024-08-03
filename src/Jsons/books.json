@@ -1,0 +1,26 @@
+[
+  {
+    "Title": "The Great Gatsby",
+    "Author": "F. Scott Fitzgerald",
+    "Isbn": "978-3-16-148410-0",
+    "Genre": "Science_Fiction",
+    "PublicationYear": 1925,
+    "IsAvailable": true
+  },
+  {
+    "Title": "To Kill a Mockingbird",
+    "Author": "Harper Lee",
+    "Isbn": "978-1-4028-9462-6",
+    "Genre": "Science_Fiction",
+    "PublicationYear": 1960,
+    "IsAvailable": false
+  },
+  {
+    "Title": "hola",
+    "Author": "jorge",
+    "Isbn": "9781402894626",
+    "Genre": "Thriller",
+    "PublicationYear": 1980,
+    "IsAvailable": true
+  }
+]
