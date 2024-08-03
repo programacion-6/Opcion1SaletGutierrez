@@ -95,7 +95,7 @@ public class DataManager<T> : IDataManager<T>
         }
     }
 
-    public T SearchById(string attributeName, T id)
+    public T SearchById(string attributeName, object id)
     {
         try
         {
