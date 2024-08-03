@@ -148,5 +148,34 @@ class Program
         // var data = new BookManager(dataManager);
         // bool removed = data.RemoveBook("978-3-16-178810-0");
         // Console.WriteLine($"Book removed: {removed}");
+
+
+
+        ///// OBTENER TODOS LOS LIBROS PRESTADOS
+
+        // string jsonFilePath = "src/Jsons/books.json";
+        // var dataManager = new DataManager<Book>(jsonFilePath);
+
+        // var data = new BookManager(dataManager);
+
+        // var book = data.GetAllBorrowedBooks();
+
+        // foreach (var bookAuthor in book)
+        // {
+        //     if (book != null)
+        //     {
+        //         Console.WriteLine($"Title: {bookAuthor.Title}");
+        //         Console.WriteLine($"Author: {bookAuthor.Author}");
+        //         Console.WriteLine($"ISBN: {bookAuthor.Isbn}");
+        //         Console.WriteLine($"Genre: {bookAuthor.Genre}");
+        //         Console.WriteLine($"Publication Year: {bookAuthor.PublicationYear}");
+        //         Console.WriteLine($"Available: {bookAuthor.IsAvailable}");
+        //         Console.WriteLine($"*******************************************************");
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("Book not found.");
+        //     }
+        // }
     }
 }
