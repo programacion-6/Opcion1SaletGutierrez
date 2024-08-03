@@ -30,9 +30,8 @@ public class BookManager : IBookManager
             return true;
         }
 
-        var booksByAuthor = SearchByBookAuthor(book.Author);
         var booksByTitle = SearchByBookTitle(book.Title);
-        if (booksByAuthor.Any() || booksByTitle.Any())
+        if (booksByTitle.Any())
         {
             return true;
         }
@@ -57,12 +56,12 @@ public class BookManager : IBookManager
 
     public bool RemoveBook(string isbn)
     {
-        throw new NotImplementedException();
+        return _dataManager.RemoveItem("Isbn", isbn);
     }
 
     public List<Book> SearchBookByGenre(string genre)
     {
-        throw new NotImplementedException();
+        return _dataManager.SearchByAttribute("Genre", genre);
     }
 
     public Book SearchBookByIsbn(string isbn)
@@ -82,6 +81,6 @@ public class BookManager : IBookManager
 
     public bool UpdateBook(string isbn, Book updatedBook)
     {
-        throw new NotImplementedException();
+        return _dataManager.UpdateItem("Isbn", isbn, updatedBook);
     }
 }
