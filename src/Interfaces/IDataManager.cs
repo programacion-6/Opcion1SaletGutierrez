@@ -2,7 +2,7 @@
 
 public interface IDataManager<T>
 {
-    List<T> LoadData(string jsonFilePath);
+    List<T> LoadData();
 
     T SearchById(string attributeName, T id);
 
