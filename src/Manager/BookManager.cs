@@ -68,7 +68,7 @@ public class BookManager : IBookManager
 
     public Book SearchBookByIsbn(string isbn)
     {
-        return _dataManager.SearchByAttribute("Isbn", isbn).FirstOrDefault();
+        return _dataManager.SearchById("Isbn", isbn);
     }
 
     public List<Book> SearchByBookAuthor(string author)
