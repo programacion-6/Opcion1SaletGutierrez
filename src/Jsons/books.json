@@ -1,0 +1,42 @@
+[
+  {
+    "Title": "The Great Gatsby",
+    "Author": "F. Scott Fitzgerald",
+    "Isbn": "978-3-16-148410-0",
+    "Genre": "Science_Fiction",
+    "PublicationYear": 1925,
+    "IsAvailable": true
+  },
+  {
+    "Title": "To Kill a Mockingbird",
+    "Author": "Harper Lee",
+    "Isbn": "978-1-4028-9462-6",
+    "Genre": "Science_Fiction",
+    "PublicationYear": 1960,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Principito 4",
+    "Author": "F. Scott Fitzgerald",
+    "Isbn": "978-3-16-148810-0",
+    "Genre": "Dystopia",
+    "PublicationYear": 1949,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Principito 2",
+    "Author": "F. Scott Fitzgerald",
+    "Isbn": "978-3-16-178810-0",
+    "Genre": "Science_Fiction",
+    "PublicationYear": 1925,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Principito 3",
+    "Author": "F. Scott Fitzgerald",
+    "Isbn": "978-3-16-178811-9",
+    "Genre": "Science_Fiction",
+    "PublicationYear": 1970,
+    "IsAvailable": true
+  }
+]
