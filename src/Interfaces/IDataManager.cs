@@ -4,7 +4,7 @@ public interface IDataManager<T>
 {
     List<T> LoadData();
 
-    T SearchById(string attributeName, T id);
+    T SearchById(string attributeName, object id);
 
     List<T> SearchByAttribute(string attributeName, string value);
 
