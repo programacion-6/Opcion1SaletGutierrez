@@ -1,6 +1,6 @@
 ﻿using Opcion1SaletGutierrez.src.Models;
 
-namespace Opcion1SaletGutierrez;
+namespace Opcion1SaletGutierrez.src.Interfaces;
 
 public interface IBookManager
 {

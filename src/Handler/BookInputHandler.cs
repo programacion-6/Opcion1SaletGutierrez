@@ -4,7 +4,7 @@ using Opcion1SaletGutierrez.src.Interfaces;
 using Opcion1SaletGutierrez.src.Manager;
 using Opcion1SaletGutierrez.src.Models;
 
-namespace Opcion1SaletGutierrez;
+namespace Opcion1SaletGutierrez.src.Handler;
 
 public class BookInputHandler
 {
