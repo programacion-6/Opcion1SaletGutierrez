@@ -177,5 +177,127 @@ class Program
         //         Console.WriteLine("Book not found.");
         //     }
         // }
+
+
+        /********************************************************************************************************************************/
+
+        ////// AÑADIR
+
+        // string jsonFilePath = "src/Jsons/users.json";
+        // var dataManager = new DataManager<User>(jsonFilePath);
+
+        // var data = new UserManager(dataManager);
+
+        // var user = new User
+        // {
+        //     MemberNumber = 11111111,
+        //     Name = "F. Scott Fitzgerald",
+        //     ContactInfo = "salet08@hmail.com"
+        // };
+        // var userAdd = data.AddUser(user);
+        // Console.WriteLine(userAdd);
+
+
+
+        //////// BUSCAR A USUARIO POR NOMBRE
+        // string jsonFilePath = "src/Jsons/users.json";
+        // var dataManager = new DataManager<User>(jsonFilePath);
+
+        // var data = new UserManager(dataManager);
+
+        // var user = data.SearchUserByName("John Doe");
+        // //var book = bookManager.GetBookByIsbn("978-006-11-2-008-0");
+        // foreach (var userName in user)
+        // {
+        //     if (user != null)
+        //     {
+        //         Console.WriteLine($"Member Number: {userName.MemberNumber}");
+        //         Console.WriteLine($"Name: {userName.Name}");
+        //         Console.WriteLine($"Contact Info: {userName.ContactInfo}");
+        //         Console.WriteLine($"*******************************************************");
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("Book not found.");
+        //     }
+        // }
+
+
+
+        ///// BUSCAR POR Member Number
+        // string jsonFilePath = "src/Jsons/users.json";
+        // var dataManager = new DataManager<User>(jsonFilePath);
+
+        // var data = new UserManager(dataManager);
+
+        // var user = data.SearchUserByMemberNumber(674311);
+
+        // if (user != null)
+        // {
+        //     Console.WriteLine($"Member Number: {user.MemberNumber}");
+        //     Console.WriteLine($"Name: {user.Name}");
+        //     Console.WriteLine($"Contact Info: {user.ContactInfo}");
+        //     Console.WriteLine($"*******************************************************");
+        // }
+        // else
+        // {
+        //     Console.WriteLine("User not found.");
+        // }
+
+
+        
+
+
+        ///// BUSCAR POR Concatc Info
+        // string jsonFilePath = "src/Jsons/users.json";
+        // var dataManager = new DataManager<User>(jsonFilePath);
+
+        // var data = new UserManager(dataManager);
+
+        // var user = data.SearchUserByContactInfo("jane.smith@example.com");
+
+        // if (user != null)
+        // {
+        //     Console.WriteLine($"Member Number: {user.MemberNumber}");
+        //     Console.WriteLine($"Name: {user.Name}");
+        //     Console.WriteLine($"Contact Info: {user.ContactInfo}");
+        //     Console.WriteLine($"*******************************************************");
+        // }
+        // else
+        // {
+        //     Console.WriteLine("User not found.");
+        // }
+
+
+
+
+
+        ///// ACTUALIZAR Usuario
+
+        // string jsonFilePath = "src/Jsons/users.json";
+        // var dataManager = new DataManager<User>(jsonFilePath);
+
+        // var data = new UserManager(dataManager);
+
+        // var userUpdate = new User
+        // {
+        //     MemberNumber = 23111111,
+        //     Name = "Scott .T Fitzgerald",
+        //     ContactInfo = "scottT08@hmail.com"
+        // };
+
+        // var userUp = data.UpdateUser(23111111, userUpdate);
+        // Console.WriteLine(userUp);
+
+
+
+
+        ////// ELIMINAR UN Usuario
+        // string jsonFilePath = "src/Jsons/users.json";
+        // var dataManager = new DataManager<User>(jsonFilePath);
+
+        // var data = new UserManager(dataManager);
+        // bool removed = data.RemoveUser(654321);
+        // Console.WriteLine($"User removed: {removed}");
     }
 }
