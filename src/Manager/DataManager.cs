@@ -82,9 +82,9 @@ public class DataManager<T> : IDataManager<T>
             }
 
             var results = dataList.Where(
-                            x => propertyInfo.GetValue(x)?
-                            .ToString()
-                            .Equals(value, StringComparison.OrdinalIgnoreCase) == true)
+                            x => propertyInfo.GetValue(x) != null &&
+                                 propertyInfo.GetValue(x).ToString()
+                                 .IndexOf(value, StringComparison.OrdinalIgnoreCase) >= 0)
                             .ToList();
             return results;
         }
