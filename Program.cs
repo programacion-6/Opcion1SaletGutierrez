@@ -299,5 +299,51 @@ class Program
         // var data = new UserManager(dataManager);
         // bool removed = data.RemoveUser(654321);
         // Console.WriteLine($"User removed: {removed}");
+
+        // string jsonFilePathUser = "src/Jsons/users.json";
+        // string jsonFilePathBook = "src/Jsons/books.json";
+        // string jsonFilePathPresentLoan = "src/Jsons/presentLoans.json";
+        // // string jsonFilePathLoadHistory = "src/Jsons/loansHistory.json";
+
+        // var bookDataManager = new DataManager<Book>(jsonFilePathBook);
+        // var userDataManager = new DataManager<User>(jsonFilePathUser);
+        // var loanDataManager = new DataManager<Loan>(jsonFilePathPresentLoan);
+        //var loanHistoryDataManager = new DataManager<Loan>(jsonFilePathLoadHistory);
+
+        
+        // Préstamo de un libro
+        // Instancia de LoanManager
+        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager);
+
+        // int memberNumber = 23111111;
+        // string isbn = "978-3-16-178811-9";
+        // int loanPeriodDays = 21;
+
+        // bool loanSuccessful = loanManager.BorrowBook(memberNumber, isbn, loanPeriodDays);
+        // Console.WriteLine(loanSuccessful ? "El libro ha sido prestado exitosamente." : "No se pudo realizar el préstamo. Verifique los datos ingresados y la disponibilidad del libro.");
+
+        // Devolución de un libro
+        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager);
+        // int memberNumber = 123456;
+        // string isbn = "978-0-452-28423-4";
+        // bool returnSuccessful = loanManager.ReturnBook(memberNumber, isbn);
+        // Console.WriteLine(returnSuccessful ? "El libro ha sido devuelto exitosamente." : "No se pudo realizar la devolución. Verifique los datos ingresados.");
+
+        // // Verificar disponibilidad de un libro
+        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager);
+        // string isbn = "978-3-16-178810-0";
+        // bool isAvailable = loanManager.IsBookAvailable(isbn);
+        // Console.WriteLine(isAvailable ? "El libro está disponible." : "El libro no está disponible.");
+
+        // // Obtener lista de libros prestados
+        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager);
+        // var borrowedBooks = loanManager.GetBorrowedBooks();
+        // Console.WriteLine("Libros actualmente prestados:");
+        // foreach (var book in borrowedBooks)
+        // {
+        //     Console.WriteLine($"- {book.Title} ({book.Isbn})");
+        //     Console.WriteLine("**********************************************");
+        // }
+
     }
 }
