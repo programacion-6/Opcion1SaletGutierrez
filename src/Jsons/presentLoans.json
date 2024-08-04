@@ -1,0 +1,80 @@
+[
+  {
+    "LoanId": "a9d4c43e-3d7a-4f55-92d0-449ff4e6f5d9",
+    "BooksLoan": [
+      {
+        "BookBorrow": {
+          "Title": "Principito",
+          "Author": "Antoine de Saint-Exupery",
+          "Isbn": "978-3-16-248410-0",
+          "Genre": "Adventure",
+          "PublicationYear": 1943,
+          "IsAvailable": false
+        },
+        "BorrowDate": "2024-08-01T14:00:00",
+        "BorrowDueDate": "2024-08-15T14:00:00"
+      },
+      {
+        "BookBorrow": {
+          "Title": "1984",
+          "Author": "George Orwell",
+          "Isbn": "978-0-452-28423-4",
+          "Genre": "Adventure",
+          "PublicationYear": 1949,
+          "IsAvailable": false
+        },
+        "BorrowDate": "2024-08-01T14:00:00",
+        "BorrowDueDate": "2024-08-15T14:00:00"
+      }
+    ],
+    "Borrower": {
+      "MemberNumber": 123456,
+      "Name": "John Doe",
+      "ContactInfo": "john.doe@example.com"
+    }
+  },
+  {
+    "LoanId": "b8e9c9d3-45b0-4b42-82f1-8f12b8d8f2b3",
+    "BooksLoan": [
+      {
+        "BookBorrow": {
+          "Title": "One Hundred Years of Solitude",
+          "Author": "Gabriel Garcia Marquez",
+          "Isbn": "978-0-06-088328-7",
+          "Genre": "Adventure",
+          "PublicationYear": 1967,
+          "IsAvailable": false
+        },
+        "BorrowDate": "2024-08-02T09:30:00",
+        "BorrowDueDate": "2024-08-16T09:30:00"
+      }
+    ],
+    "Borrower": {
+      "MemberNumber": 654321,
+      "Name": "Jane Smith",
+      "ContactInfo": "jane.smith@example.com"
+    }
+  },
+  {
+    "LoanId": "c7f6d3b5-8c2e-4f4d-a23e-5e8b94e0b42b",
+    "BooksLoan": [
+      {
+        "BookBorrow": {
+          "Title": "To Kill a Mockingbird",
+          "Author": "Harper Lee",
+          "Isbn": "978-1-4028-9462-6",
+          "Genre": "Science_Fiction",
+          "PublicationYear": 1960,
+          "IsAvailable": false
+        },
+        "BorrowDate": "2024-08-03T11:00:00",
+        "BorrowDueDate": "2024-08-17T11:00:00"
+      }
+    ],
+    "Borrower": {
+      "MemberNumber": 23111111,
+      "Name": "Scott .T Fitzgerald",
+      "ContactInfo": "scottT08@hmail.com"
+    }
+  }
+]
