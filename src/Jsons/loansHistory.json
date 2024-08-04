@@ -69,6 +69,18 @@
         },
         "BorrowDate": "2023-08-03T11:00:00",
         "BorrowDueDate": "2023-08-17T11:00:00"
+      },
+      {
+        "BookBorrow": {
+          "Title": "Principito 3",
+          "Author": "F. Scott Fitzgerald",
+          "Isbn": "978-3-16-178811-9",
+          "Genre": "Science_Fiction",
+          "PublicationYear": 1970,
+          "IsAvailable": false
+        },
+        "BorrowDate": "2024-08-04T03:46:15.0750276-04:00",
+        "BorrowDueDate": "2024-08-25T03:46:15.0750277-04:00"
       }
     ],
     "Borrower": {

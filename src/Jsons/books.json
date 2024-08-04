@@ -37,7 +37,7 @@
     "Isbn": "978-3-16-178811-9",
     "Genre": "Science_Fiction",
     "PublicationYear": 1970,
-    "IsAvailable": false
+    "IsAvailable": true
   },
   {
     "Title": "Principito",

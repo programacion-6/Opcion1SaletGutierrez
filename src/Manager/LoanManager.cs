@@ -7,13 +7,16 @@ public class LoanManager : ILoanManager
 {
     private readonly IDataManager<Book> _bookDataManager;
     private readonly IDataManager<User> _userDataManager;
-    private readonly IDataManager<Loan> _loanDataManager;
+    private readonly IDataManager<Loan> _presentLoans;
 
-    public LoanManager(IDataManager<Book> bookDataManager, IDataManager<User> userDataManager, IDataManager<Loan> loanDataManager)
+    private readonly IDataManager<Loan> _loansHistory;
+
+    public LoanManager(IDataManager<Book> bookDataManager, IDataManager<User> userDataManager, IDataManager<Loan> presentLoans, IDataManager<Loan> loansHistory)
     {
         _bookDataManager = bookDataManager;
         _userDataManager = userDataManager;
-        _loanDataManager = loanDataManager;
+        _presentLoans = presentLoans;
+        _loansHistory = loansHistory;
     }
 
     public bool BorrowBook(int memberNumber, string isbn, int loanPeriodDays)
@@ -32,18 +35,27 @@ public class LoanManager : ILoanManager
             return false;
         }
 
-        var loans = _loanDataManager.LoadData();
-        var existingLoan = loans.FirstOrDefault(l => l.Borrower.MemberNumber == memberNumber);
+        var presentLoans = _presentLoans.LoadData();
+        var loansHistory = _loansHistory.LoadData();
+        var existingPresentLoan = presentLoans.FirstOrDefault(l => l.Borrower.MemberNumber == memberNumber);
+        var existingLoansHistory = loansHistory.FirstOrDefault(l => l.Borrower.MemberNumber == memberNumber);
 
-        if (existingLoan != null)
+        if (existingPresentLoan != null || existingLoansHistory != null)
         {
-            existingLoan.BooksLoan.Add(new BookLoan
+            existingPresentLoan.BooksLoan.Add(new BookLoan
             {
                 BookBorrow = book,
                 BorrowDate = DateTime.Now,
                 BorrowDueDate = DateTime.Now.AddDays(loanPeriodDays)
             });
-            _loanDataManager.UpdateItem("LoanId", existingLoan.LoanId, existingLoan);
+            existingLoansHistory.BooksLoan.Add(new BookLoan
+            {
+                BookBorrow = book,
+                BorrowDate = DateTime.Now,
+                BorrowDueDate = DateTime.Now.AddDays(loanPeriodDays)
+            });
+            _presentLoans.UpdateItem("LoanId", existingPresentLoan.LoanId, existingPresentLoan);
+            _loansHistory.UpdateItem("LoanId", existingLoansHistory.LoanId, existingLoansHistory);
         }
         else
         {
@@ -61,23 +73,35 @@ public class LoanManager : ILoanManager
                 }
             }
             };
-            _loanDataManager.AddItem(newLoan);
+            _presentLoans.AddItem(newLoan);
+            _loansHistory.AddItem(newLoan);
         }
 
         book.IsAvailable = false;
         _bookDataManager.UpdateItem("Isbn", isbn, book);
-        loans = _loanDataManager.LoadData();
-        var updatedLoan = loans.FirstOrDefault(l => l.Borrower.MemberNumber == memberNumber);
-        if (updatedLoan != null)
+        presentLoans = _presentLoans.LoadData();
+        loansHistory = _loansHistory.LoadData();
+        //loans = _loanDataManager.LoadData();
+        var updatedPresentLoan = presentLoans.FirstOrDefault(l => l.Borrower.MemberNumber == memberNumber);
+        var updatedLoansHistory = loansHistory.FirstOrDefault(l => l.Borrower.MemberNumber == memberNumber);
+        if (updatedPresentLoan != null || updatedLoansHistory != null)
         {
-            foreach (var bookLoan in updatedLoan.BooksLoan)
+            foreach (var bookLoan in updatedPresentLoan.BooksLoan)
             {
                 if (bookLoan.BookBorrow.Isbn == isbn)
                 {
                     bookLoan.BookBorrow.IsAvailable = false;
                 }
             }
-            _loanDataManager.UpdateItem("LoanId", updatedLoan.LoanId, updatedLoan);
+            foreach (var bookLoan in updatedLoansHistory.BooksLoan)
+            {
+                if (bookLoan.BookBorrow.Isbn == isbn)
+                {
+                    bookLoan.BookBorrow.IsAvailable = false;
+                }
+            }
+            _presentLoans.UpdateItem("LoanId", updatedPresentLoan.LoanId, updatedPresentLoan);
+            _loansHistory.UpdateItem("LoanId", updatedLoansHistory.LoanId, updatedLoansHistory);
         }
 
         return true;
@@ -85,7 +109,7 @@ public class LoanManager : ILoanManager
 
     public List<Book> GetBorrowedBooks()
     {
-        var loans = _loanDataManager.LoadData();
+        var loans = _presentLoans.LoadData();
         return loans.SelectMany(l => l.BooksLoan.Select(bl => bl.BookBorrow)).ToList();
     }
 
@@ -97,13 +121,13 @@ public class LoanManager : ILoanManager
 
     public bool IsBookBorrowed(string isbn)
     {
-        var loans = _loanDataManager.LoadData();
+        var loans = _presentLoans.LoadData();
         return loans.Any(l => l.BooksLoan.Any(bl => bl.BookBorrow.Isbn == isbn));
     }
 
     public bool ReturnBook(int memberNumber, string isbn)
     {
-        var loans = _loanDataManager.LoadData();
+        var loans = _presentLoans.LoadData();
         var loan = loans.FirstOrDefault(l => l.Borrower.MemberNumber == memberNumber);
 
         if (loan == null)
@@ -123,11 +147,11 @@ public class LoanManager : ILoanManager
 
         if (loan.BooksLoan.Count > 0)
         {
-            _loanDataManager.UpdateItem("LoanId", loan.LoanId, loan);
+            _presentLoans.UpdateItem("LoanId", loan.LoanId, loan);
         }
         else
         {
-            _loanDataManager.RemoveItem("LoanId", loan.LoanId);
+            _presentLoans.RemoveItem("LoanId", loan.LoanId);
         }
 
         var book = _bookDataManager.SearchById("Isbn", isbn);
