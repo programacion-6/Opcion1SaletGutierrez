@@ -2,11 +2,9 @@
 
 public class Loan
 {
-    public List<Book> BorrowedBook { get; set; }
+    public Guid LoanId { get; set; }
+
+    public List<BookLoan> BooksLoan { get; set; }
 
     public User Borrower { get; set; }
-
-    public DateTime BorrowDate { get; set; }
-
-    public DateTime BorrowDueDate { get; set; }
 }
