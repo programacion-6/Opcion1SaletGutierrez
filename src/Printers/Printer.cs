@@ -91,6 +91,11 @@ public class Printer
         Console.WriteLine("Book not found.");
     }
 
+    public void DisplayUserNotFound()
+    {
+        Console.WriteLine("User not found.");
+    }
+
     public void DisplayInvalidOption()
     {
         Console.WriteLine("Invalid option. Please select a valid option.");
@@ -99,5 +104,18 @@ public class Printer
     public void DisplayInvalidOptionLenght(string min, string max)
     {
         Console.WriteLine($"Invalid option.  Please enter a number between {min} and {max}.");
+    }
+
+    public void DisplayUserDetails(User user)
+    {
+        Console.WriteLine($"Name: {user.Name}");
+        Console.WriteLine($"Member Number: {user.MemberNumber}");
+        Console.WriteLine($"Contact Info: {user.ContactInfo}");
+        Console.WriteLine(new string('*', 55));
+    }
+
+    public void DisplayInvalidInputMessage(string printObject)
+    {
+        Console.WriteLine($"Please enter a valid {printObject}.");
     }
 }

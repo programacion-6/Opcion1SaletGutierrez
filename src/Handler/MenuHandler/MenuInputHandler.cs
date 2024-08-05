@@ -1,4 +1,5 @@
 ﻿using Opcion1SaletGutierrez.src.Handler.BookHandler;
+using Opcion1SaletGutierrez.src.Handler.UserHandler;
 using Opcion1SaletGutierrez.src.Models;
 
 namespace Opcion1SaletGutierrez.src.Handler.MenuHandler;
@@ -7,63 +8,8 @@ public class MenuInputHandler
 {
     private Printer _printer = new Printer();
     private BookInputHandler _bookInputHandler = new BookInputHandler();
+    private UserInputHandlerManager _userInputHandlerManager = new UserInputHandlerManager();
 
-    // public void SearchABookOption()
-    // {
-    //     bool continueSearching;
-    //     do
-    //     {
-    //         int option = GetValidOptionSearch();
-    //         SearchBookDetails(option);
-    //         _printer.DisplayConfirmationYesOrNo("continue searching");
-    //         continueSearching = _userInputHandler.ConfirmOption();
-
-    //     } while (continueSearching);
-
-    // }
-
-    // private int GetValidOptionSearch()
-    // {
-    //     int option;
-    //     while (true)
-    //     {
-    //         Console.WriteLine("How do you want to search for the book?");
-    //         Console.WriteLine("1. Title");
-    //         Console.WriteLine("2. Author");
-    //         Console.WriteLine("3. ISBN");
-    //         Console.WriteLine("4. Genre");
-
-    //         if (int.TryParse(Console.ReadLine(), out option) && option >= 1 && option <= 4)
-    //         {
-    //             return option;
-    //         }
-
-    //         _printer.DisplayInvalidOptionLenght("1", "4");
-    //     }
-    // }
-
-    // private void SearchBookDetails(int option)
-    // {
-    //     _printer.DisplayRentalInstructions();
-    //     switch (option)
-    //     {
-    //         case 1:
-    //             SearchByTitle();
-    //             break;
-    //         case 2:
-    //             SearchByAuthor();
-    //             break;
-    //         case 3:
-    //             SearchByISBN();
-    //             break;
-    //         case 4:
-    //             SearchByGenre();
-    //             break;
-    //         default:
-    //             _printer.DisplayInvalidOption();
-    //             break;
-    //     }
-    // }
     public void menu()
     {
         Console.WriteLine("1. Add Book\n"
@@ -109,13 +55,13 @@ public class MenuInputHandler
                 _bookInputHandler.ExecuteUpdateBookOption();
                 break;
             case 4:
-
+                _userInputHandlerManager.ExecuteAddUserOption();
                 break;
             case 5:
-
+                _userInputHandlerManager.ExecuteRemoveUserOption();
                 break;
             case 6:
-
+                _userInputHandlerManager.ExecuteUpdateUserOption();
                 break;
             case 7:
 
@@ -127,7 +73,7 @@ public class MenuInputHandler
                 _bookInputHandler.ExecuteSearchBookOption();
                 break;
             case 10:
-
+                _userInputHandlerManager.ExecuteSearchUserOption();
                 break;
             case 11:
 
