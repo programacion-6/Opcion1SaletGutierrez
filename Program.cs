@@ -1,6 +1,4 @@
-﻿using Opcion1SaletGutierrez.src.Enums;
-using Opcion1SaletGutierrez.src.Manager;
-using Opcion1SaletGutierrez.src.Models;
+﻿using Opcion1SaletGutierrez.src.Handler.MenuHandler;
 
 namespace Opcion1SaletGutierrez;
 
@@ -8,10 +6,21 @@ class Program
 {
     static void Main()
     {
-        ////// AÑADIR
-        // var inputHandler = new BookInputHandler();
+        var menu = new MenuInputHandler();
+        Console.WriteLine("Welcome to the Bookstore");
+        menu.displayMenu();
 
-        // inputHandler.CollectBookData();
+        ////// BOOKS
+        //  var inputHandler = new BookInputHandler();
+        
+
+        // inputHandler.ExecuteAddBookOption();
+        // inputHandler.ExecuteRemoveBookOption();
+        // inputHandler.ExecuteUpdateBookOption();
+        // inputHandler.ExecuteSearchBookOption();
+
+
+        ///////////////////////////////////////////
 
         ///// BUSCAR POR ISBN
         // string jsonFilePath = "src/Jsons/books.json";
@@ -145,7 +154,10 @@ class Program
         // string jsonFilePath = "src/Jsons/books.json";
         // var dataManager = new DataManager<Book>(jsonFilePath);
 
-        // var data = new BookManager(dataManager);
+        // var validato = new ValidatorManager<Book>();
+
+
+        // var data = new BookManager(dataManager, validato);
         // bool removed = data.RemoveBook("978-3-16-178810-0");
         // Console.WriteLine($"Book removed: {removed}");
 
@@ -245,7 +257,7 @@ class Program
         // }
 
 
-        
+
 
 
         ///// BUSCAR POR Concatc Info
@@ -300,20 +312,31 @@ class Program
         // bool removed = data.RemoveUser(654321);
         // Console.WriteLine($"User removed: {removed}");
 
+
+
+
+
+
+
+
+
+
         // string jsonFilePathUser = "src/Jsons/users.json";
         // string jsonFilePathBook = "src/Jsons/books.json";
         // string jsonFilePathPresentLoan = "src/Jsons/presentLoans.json";
-        // // string jsonFilePathLoadHistory = "src/Jsons/loansHistory.json";
+        
+        // string jsonFilePathLoadHistory = "src/Jsons/loansHistory.json";
 
         // var bookDataManager = new DataManager<Book>(jsonFilePathBook);
         // var userDataManager = new DataManager<User>(jsonFilePathUser);
         // var loanDataManager = new DataManager<Loan>(jsonFilePathPresentLoan);
-        //var loanHistoryDataManager = new DataManager<Loan>(jsonFilePathLoadHistory);
 
-        
+        // var loanHistoryDataManager = new DataManager<Loan>(jsonFilePathLoadHistory);
+
+
         // Préstamo de un libro
         // Instancia de LoanManager
-        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager);
+        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager, loanHistoryDataManager);
 
         // int memberNumber = 23111111;
         // string isbn = "978-3-16-178811-9";
@@ -323,20 +346,20 @@ class Program
         // Console.WriteLine(loanSuccessful ? "El libro ha sido prestado exitosamente." : "No se pudo realizar el préstamo. Verifique los datos ingresados y la disponibilidad del libro.");
 
         // Devolución de un libro
-        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager);
-        // int memberNumber = 123456;
-        // string isbn = "978-0-452-28423-4";
+        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager, loanHistoryDataManager);
+        // int memberNumber = 23111111;
+        // string isbn = "978-3-16-178811-9";
         // bool returnSuccessful = loanManager.ReturnBook(memberNumber, isbn);
         // Console.WriteLine(returnSuccessful ? "El libro ha sido devuelto exitosamente." : "No se pudo realizar la devolución. Verifique los datos ingresados.");
 
         // // Verificar disponibilidad de un libro
-        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager);
-        // string isbn = "978-3-16-178810-0";
+        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager, loanHistoryDataManager);
+        // string isbn = "978-3-16-178811-9";
         // bool isAvailable = loanManager.IsBookAvailable(isbn);
         // Console.WriteLine(isAvailable ? "El libro está disponible." : "El libro no está disponible.");
 
         // // Obtener lista de libros prestados
-        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager);
+        // var loanManager = new LoanManager(bookDataManager, userDataManager, loanDataManager, loanHistoryDataManager);
         // var borrowedBooks = loanManager.GetBorrowedBooks();
         // Console.WriteLine("Libros actualmente prestados:");
         // foreach (var book in borrowedBooks)
@@ -344,6 +367,25 @@ class Program
         //     Console.WriteLine($"- {book.Title} ({book.Isbn})");
         //     Console.WriteLine("**********************************************");
         // }
+
+        // Instancia de los administradores de datos
+        // string jsonFilePathBook = "src/Jsons/books.json";
+        // string jsonFilePathPresentLoan = "src/Jsons/presentLoans.json";
+
+        // string jsonFilePathLoadHistory = "src/Jsons/loansHistory.json";
+        // var loanHistoryDataManager = new DataManager<Loan>(jsonFilePathLoadHistory);
+        
+
+
+        // var bookDataManager = new DataManager<Book>(jsonFilePathBook);
+
+        // var loanDataManager = new DataManager<Loan>(jsonFilePathPresentLoan);
+
+        // var reportGenerator = new ReportGenerator(bookDataManager, loanDataManager, loanHistoryDataManager);
+
+        // reportGenerator.PrintAllBorrowedBooks();
+        // reportGenerator.PrintOverdueBooks();
+        // reportGenerator.PrintUserLoanHistory(23111111);
 
     }
 }

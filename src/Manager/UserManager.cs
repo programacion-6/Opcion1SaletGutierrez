@@ -7,36 +7,21 @@ public class UserManager : IUserManager
 {
     private readonly IDataManager<User> _dataManager;
 
-    public UserManager(IDataManager<User> dataManager)
+    private readonly IUserValidator _userValidator;
+
+    public UserManager(IDataManager<User> dataManager, IUserValidator userValidator)
     {
         _dataManager = dataManager;
+        _userValidator = userValidator;
     }
 
     public bool AddUser(User user)
     {
-        if (IsDuplicate(user))
+        if (_userValidator.IsUserDuplicate(_dataManager, user))
         {
             return false;
         }
         return _dataManager.AddItem(user);
-    }
-
-    private bool IsDuplicate(User user)
-    {
-        var userByMemberNumber = SearchUserByMemberNumber(user.MemberNumber);
-        if (userByMemberNumber != null)
-        {
-            return true;
-        }
-
-        var usersByName = SearchUserByName(user.Name);
-        var usersByContactInfo = SearchUserByContactInfo(user.ContactInfo);
-        if (usersByName.Any() || usersByContactInfo != null)
-        {
-            return true;
-        }
-
-        return false;
     }
 
     public bool RemoveUser(int memberNumber)
