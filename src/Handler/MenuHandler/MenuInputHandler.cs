@@ -9,6 +9,7 @@ public class MenuInputHandler
     private Printer _printer = new Printer();
     private BookInputHandler _bookInputHandler = new BookInputHandler();
     private UserInputHandlerManager _userInputHandlerManager = new UserInputHandlerManager();
+    private LoanBookInputHandlerManager _loanBookInputHandlerManager = new LoanBookInputHandlerManager();
 
     public void menu()
     {
@@ -22,8 +23,11 @@ public class MenuInputHandler
             + "8. Return Book\n"
             + "9. Search Book\n"
             + "10. Search User\n"
-            + "11. Report\n"
-            + "12. Cancel");
+            + "11. Report All Borrowed Books\n"
+            + "12. Report Over Due Books\n"
+            + "13. Report User Loan History\n"
+            + "14. list of books currently on loan\n"
+            + "15. Cancel");
     }
 
     public void displayMenu()
@@ -64,10 +68,10 @@ public class MenuInputHandler
                 _userInputHandlerManager.ExecuteUpdateUserOption();
                 break;
             case 7:
-
+                _loanBookInputHandlerManager.ExecuteBorrowBookOption();
                 break;
             case 8:
-
+                _loanBookInputHandlerManager.ExecuteReturnBookOption();
                 break;
             case 9:
                 _bookInputHandler.ExecuteSearchBookOption();
@@ -76,9 +80,18 @@ public class MenuInputHandler
                 _userInputHandlerManager.ExecuteSearchUserOption();
                 break;
             case 11:
-
+                _loanBookInputHandlerManager.ReportByAllBorrowedBooks();
                 break;
             case 12:
+                _loanBookInputHandlerManager.ReportOverDueBooks();
+                break;
+            case 13:
+                _loanBookInputHandlerManager.ReportUserLoanHistory();
+                break;
+            case 14:
+                _loanBookInputHandlerManager.ExecutelistOfBooksCurrentlyOnLoan();
+                break;
+            case 15:
                 Console.WriteLine("come back soon :)");
                 break;
             default:
@@ -94,12 +107,12 @@ public class MenuInputHandler
         {
             menu();
 
-            if (int.TryParse(Console.ReadLine(), out option) && option >= 1 && option <= 12)
+            if (int.TryParse(Console.ReadLine(), out option) && option >= 1 && option <= 15)
             {
                 return option;
             }
 
-            _printer.DisplayInvalidOptionLenght("1", "4");
+            _printer.DisplayInvalidOptionLenght("1", "15");
         }
     }
 }

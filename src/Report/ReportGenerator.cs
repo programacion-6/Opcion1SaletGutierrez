@@ -5,13 +5,11 @@ namespace Opcion1SaletGutierrez.src.Report;
 
 public class ReportGenerator
 {
-    private readonly IDataManager<Book> _bookDataManager;
     private readonly IDataManager<Loan> _loanDataManager;
     private readonly IDataManager<Loan> _loansHistory;
 
-    public ReportGenerator(IDataManager<Book> bookDataManager, IDataManager<Loan> loanDataManager, IDataManager<Loan> loansHistory)
+    public ReportGenerator(IDataManager<Loan> loanDataManager, IDataManager<Loan> loansHistory)
     {
-        _bookDataManager = bookDataManager;
         _loanDataManager = loanDataManager;
         _loansHistory = loansHistory;
     }

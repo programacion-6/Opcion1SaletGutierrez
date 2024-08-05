@@ -81,7 +81,6 @@ public class LoanManager : ILoanManager
         _bookDataManager.UpdateItem("Isbn", isbn, book);
         presentLoans = _presentLoans.LoadData();
         loansHistory = _loansHistory.LoadData();
-        //loans = _loanDataManager.LoadData();
         var updatedPresentLoan = presentLoans.FirstOrDefault(l => l.Borrower.MemberNumber == memberNumber);
         var updatedLoansHistory = loansHistory.FirstOrDefault(l => l.Borrower.MemberNumber == memberNumber);
         if (updatedPresentLoan != null || updatedLoansHistory != null)
