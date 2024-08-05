@@ -8,35 +8,21 @@ public class BookManager : IBookManager
 
     private readonly IDataManager<Book> _dataManager;
 
-    public BookManager(IDataManager<Book> dataManager)
+    private readonly IBookValidator _bookValidator;
+
+    public BookManager(IDataManager<Book> dataManager, IBookValidator bookValidator)
     {
         _dataManager = dataManager;
+        _bookValidator = bookValidator;
     }
 
     public bool AddBook(Book book)
     {
-        if (IsDuplicate(book))
+        if (_bookValidator.IsBookDuplicate(_dataManager, book))
         {
             return false;
         }
         return _dataManager.AddItem(book);
-    }
-
-    private bool IsDuplicate(Book book)
-    {
-        var bookByIsbn = SearchBookByIsbn(book.Isbn);
-        if (bookByIsbn != null)
-        {
-            return true;
-        }
-
-        var booksByTitle = SearchByBookTitle(book.Title);
-        if (booksByTitle.Any())
-        {
-            return true;
-        }
-
-        return false;
     }
 
     public List<Book> GetAllBorrowedBooks()

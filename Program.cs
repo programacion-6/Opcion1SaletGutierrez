@@ -1,8 +1,10 @@
 ﻿using Opcion1SaletGutierrez.src.Enums;
+using Opcion1SaletGutierrez.src.Handler;
 using Opcion1SaletGutierrez.src.Interfaces;
 using Opcion1SaletGutierrez.src.Manager;
 using Opcion1SaletGutierrez.src.Models;
 using Opcion1SaletGutierrez.src.Report;
+using Opcion1SaletGutierrez.src.Validators;
 
 namespace Opcion1SaletGutierrez;
 
@@ -10,10 +12,16 @@ class Program
 {
     static void Main()
     {
-        ////// AÑADIR
-        // var inputHandler = new BookInputHandler();
+        ////// BOOKS
+        //var inputHandler = new BookInputHandler();
 
-        // inputHandler.CollectBookData();
+        //inputHandler.AddABookOption();
+        //inputHandler.RemoveABookOption();
+        //inputHandler.UpdateABookOption();
+        //inputHandler.SearchABookOption();
+
+
+        ///////////////////////////////////////////
 
         ///// BUSCAR POR ISBN
         // string jsonFilePath = "src/Jsons/books.json";
@@ -147,7 +155,10 @@ class Program
         // string jsonFilePath = "src/Jsons/books.json";
         // var dataManager = new DataManager<Book>(jsonFilePath);
 
-        // var data = new BookManager(dataManager);
+        // var validato = new ValidatorManager<Book>();
+
+
+        // var data = new BookManager(dataManager, validato);
         // bool removed = data.RemoveBook("978-3-16-178810-0");
         // Console.WriteLine($"Book removed: {removed}");
 
