@@ -36,7 +36,7 @@ public class MenuInputHandler
         {
             int option = GetValidOptionSearch();
             SearchBookDetails(option);
-            if (option == 12)
+            if (option == 15)
             {
                 break;
             }
