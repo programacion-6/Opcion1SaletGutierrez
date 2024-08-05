@@ -1,10 +1,4 @@
-﻿using Opcion1SaletGutierrez.src.Enums;
-using Opcion1SaletGutierrez.src.Handler;
-using Opcion1SaletGutierrez.src.Interfaces;
-using Opcion1SaletGutierrez.src.Manager;
-using Opcion1SaletGutierrez.src.Models;
-using Opcion1SaletGutierrez.src.Report;
-using Opcion1SaletGutierrez.src.Validators;
+﻿using Opcion1SaletGutierrez.src.Handler.MenuHandler;
 
 namespace Opcion1SaletGutierrez;
 
@@ -12,13 +6,18 @@ class Program
 {
     static void Main()
     {
-        ////// BOOKS
-        //var inputHandler = new BookInputHandler();
+        var menu = new MenuInputHandler();
+        Console.WriteLine("Welcome to the Bookstore");
+        menu.displayMenu();
 
-        //inputHandler.AddABookOption();
-        //inputHandler.RemoveABookOption();
-        //inputHandler.UpdateABookOption();
-        //inputHandler.SearchABookOption();
+        ////// BOOKS
+        //  var inputHandler = new BookInputHandler();
+        
+
+        // inputHandler.ExecuteAddBookOption();
+        // inputHandler.ExecuteRemoveBookOption();
+        // inputHandler.ExecuteUpdateBookOption();
+        // inputHandler.ExecuteSearchBookOption();
 
 
         ///////////////////////////////////////////

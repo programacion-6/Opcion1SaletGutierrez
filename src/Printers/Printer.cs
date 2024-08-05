@@ -5,6 +5,11 @@ namespace Opcion1SaletGutierrez;
 
 public class Printer
 {
+    public void PrintMessage(string message)
+    {
+        Console.WriteLine(message);
+    }
+
     public void PrintObjectIsEmpty(string printObject)
     {
         Console.WriteLine($"{printObject} is empty, enter a correct {printObject}");
@@ -56,6 +61,7 @@ public class Printer
         Console.WriteLine($"ISBN: {book.Isbn}");
         Console.WriteLine($"Genre: {book.Genre}");
         Console.WriteLine($"Publication Year: {book.PublicationYear}");
+        Console.WriteLine(new string('*', 55));
     }
 
     public void DisplayConfirmationYesOrNo(string action)
@@ -68,5 +74,30 @@ public class Printer
     public void PrintThatYouCanOnlyPrintNumberOneOrTwo()
     {
         Console.WriteLine("You can only choose number 1 or 2");
+    }
+
+    public void DisplayRentalInstructions()
+    {
+        Console.WriteLine("If you want to rent the book, go to the book lending section and remember the ISBN code to add it.");
+    }
+
+    public void PrintNoticeOfTheActionYouHaveToTake(string printObject, string example)    
+    {
+        Console.WriteLine($"Enter the {printObject} of the book you wish to search for: (i.e. {example}).");
+    }
+
+    public void DisplayBookNotFound()
+    {
+        Console.WriteLine("Book not found.");
+    }
+
+    public void DisplayInvalidOption()
+    {
+        Console.WriteLine("Invalid option. Please select a valid option.");
+    }
+
+    public void DisplayInvalidOptionLenght(string min, string max)
+    {
+        Console.WriteLine($"Invalid option.  Please enter a number between {min} and {max}.");
     }
 }
